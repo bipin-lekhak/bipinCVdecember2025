@@ -1,0 +1,237 @@
+% CV for health-system and health-services research positions (e.g. delivery science fellowships).
+% The general CV is main.tex; both share cv_preamble.tex and cv_header.tex.
+\documentclass[10pt, letterpaper]{article}
+\input{cv_preamble}
+
+\begin{document}
+    \input{cv_header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{Summary}
+    \begin{onecolentry}
+        PhD candidate developing \textbf{causal inference and machine learning methods for longitudinal health
+        data}. My work estimates how a patient's outcomes would evolve under alternative treatment plans when
+        treatments change over time and are confounded by the patient's condition, and adapts these predictions
+        to each patient's own history. I have analysed real-world data from an NIH-funded study of in-home
+        monitoring for heart-failure patients after hospital discharge, with clinical investigators at the
+        University of Rochester Medical Center. Before the PhD, four years building machine learning systems in
+        industry, including medical image analysis.
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{onecolentry}
+        \textbf{Research interests:} causal inference with electronic health records, treatment-effect estimation
+        under time-varying confounding, personalised prediction of treatment response, remote patient monitoring
+        and care after hospital discharge, clinical risk prediction.
+    \end{onecolentry}
+
+
+    \section{Education}
+    \begin{twocolentry}{
+        \textit{Aug 2022 – Present}
+
+        \textit{Expected June 2027}}
+        \textbf{Rochester Institute of Technology}, Rochester, NY
+
+        \textit{Ph.D. in Computing and Information Sciences}
+    \end{twocolentry}
+
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Advisor: Prof. Linwei Wang, Computational Biomedicine Laboratory
+            \item Dissertation proposal (defended July 2026): \textit{Learning Dynamics for Forecasting Future
+            Trajectories under External Interventions}
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{Nov 2014 – Sep 2018}}
+        \textbf{Pulchowk Campus, Institute of Engineering, Tribhuvan University}, Nepal
+
+        \textit{B.E. in Electronics and Communication Engineering}
+    \end{twocolentry}
+
+
+    \section{Research Experience}
+
+    \begin{twocolentry}{
+        \textit{Rochester, NY}
+
+        \textit{Aug 2022 – Present}}
+        \textbf{Graduate Research Assistant}
+
+        \textit{Computational Biomedicine Laboratory, RIT} (PI: Prof. Linwei Wang)
+    \end{twocolentry}
+
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Remote monitoring of heart-failure patients after discharge} (NIH/NINR R01NR018301, with
+            the University of Rochester Medical Center). Analysed data from a sensor-equipped toilet seat that
+            recorded cardiac measurements at home for 90 days after hospital discharge. Quantified enrollment and
+            adherence, and identified why in-home deployments failed. Built a random-forest model that predicts
+            hospitalisation within 21 days from 7-day windows of seat-derived measurements, including heart rate
+            and heart-rate variability (AUC 0.74, sensitivity 57\%, specificity 75\%), and interactive dashboards
+            for reviewing the study data. First author of the resulting Computing in Cardiology paper.
+            \item \textbf{Treatment-response prediction under time-varying confounding (iASIDE).} Developed a model
+            that predicts how a patient's outcomes will evolve under a planned sequence of treatments. It learns
+            the course of the disease and the response to treatment as separate components, adapts both to the
+            patient's history, and comes with an identifiability guarantee. Evaluated on MIMIC-III intensive-care
+            records and a pharmacokinetic--pharmacodynamic simulator of tumour growth under chemotherapy and
+            radiotherapy, with and without treatment-assignment bias.
+            \item \textbf{Comparison with g-methods and their machine-learning extensions.} Built a reproducible
+            benchmark of 10+ methods for time-varying treatments, including marginal structural models with
+            inverse probability weighting, recurrent marginal structural networks, g-computation (G-Net) and
+            balanced-representation methods (CRN, Causal Transformer), across prediction horizons and levels of
+            confounding.
+            \item \textbf{Heterogeneous treatment effects over time} (work in progress, with S.\ Poudel). Temporal
+            X- and R-learners for estimating individual treatment effects from longitudinal data.
+            \item \textbf{Reproducible research software.} Analysis pipelines in Python with experiment tracking
+            (MLflow), configuration management and automated tests, run on high-performance computing clusters
+            (SLURM).
+        \end{highlights}
+    \end{onecolentry}
+
+
+    \section{Publications}
+
+    \begin{onecolentry}
+        \textit{Manuscripts under review}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{samepage}
+        \begin{twocolentry}{
+            \textit{2026}
+            }
+            \textbf{iASIDE: Identifiable, Adaptable, and Separable Interventional Dynamics}
+
+            \vspace{0.05 cm}
+
+            % TODO: confirm the author list before sending this CV out
+            \mbox{\textbf{\textit{Bipin Lekhak}}, Linwei Wang}
+        \end{twocolentry}
+    \end{samepage}
+
+    \vspace{0.3 cm}
+
+    \begin{onecolentry}
+        \textit{Peer-reviewed conference papers}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{samepage}
+        \begin{twocolentry}{
+            \textbf{ICLR 2026}
+            }
+            \textbf{ProReGen: Progressive Residual Generation under Attribute Correlations}
+
+            \vspace{0.05 cm}
+
+            \mbox{Ruby Shrestha, Ajay Gopi, Casey Meisenzahl, \textbf{\textit{Bipin Lekhak}}, Linwei Wang}
+
+            \vspace{0.05 cm}
+
+            International Conference on Learning Representations.
+            \href{https://openreview.net/forum?id=2LzYaW032Q}{OpenReview}
+        \end{twocolentry}
+    \end{samepage}
+
+    \vspace{0.3 cm}
+
+    \begin{samepage}
+        \begin{twocolentry}{
+            \textbf{CinC 2023}
+            }
+            \textbf{Novel In-Home Cardiac Monitoring for Heart Failure Patients}
+
+            \vspace{0.05 cm}
+
+            \textbf{\textit{Bipin Lekhak}}, Ryan Missel, Dillon Dzikowicz, Solomiya Rachynska, Wojciech Zareba, Linwei Wang
+
+            \vspace{0.05 cm}
+
+            Computing in Cardiology.
+            \href{https://ieeexplore.ieee.org/abstract/document/10363960}{IEEE Xplore}
+        \end{twocolentry}
+    \end{samepage}
+
+
+    \section{Industry Experience}
+
+    \begin{twocolentry}{
+        \textit{Kathmandu, Nepal}
+
+        \textit{Sep 2018 – Jun 2022}}
+        \textbf{Machine Learning Engineer}
+
+        \textit{Fusemachines}
+    \end{twocolentry}
+
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built deep-learning segmentation of medical images (U-Net, Mask R-CNN, Detectron).
+            \item Reconstructed 3D anatomical structures from 2D images by optimisation over statistical shape
+            models.
+            \item Forecast product sales from historical data with multi-stage statistical and machine learning
+            models (LSTMs, Prophet, gradient-boosted trees, Bayesian models in PyMC).
+        \end{highlights}
+    \end{onecolentry}
+
+
+    \section{Teaching}
+
+    \begin{twocolentry}{
+        \textit{Fall 2025}}
+        \textbf{Teaching Assistant}, GCCIS-820 Quantitative Foundations, RIT
+
+        \textit{PhD core course: linear algebra, optimisation and statistical inference}
+    \end{twocolentry}
+
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Supervised and graded team projects and reports; built the tool used to form project teams.
+        \end{highlights}
+    \end{onecolentry}
+
+
+    \section{Skills}
+
+    \begin{onecolentry}
+        \skillline{Causal inference}{potential outcomes, time-varying confounding, inverse probability weighting
+        and marginal structural models, g-computation, meta-learners (X- and R-learners)}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{onecolentry}
+        \skillline{Statistical and ML modelling}{longitudinal and time-series models, state-space and
+        latent-variable models, Bayesian modelling, clinical risk prediction (random forests, gradient boosting),
+        deep learning}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{onecolentry}
+        \skillline{Health data}{MIMIC-III electronic health records, in-home remote-monitoring sensor data,
+        medical images}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{onecolentry}
+        \skillline{Software}{Python (pandas, scikit-learn, PyTorch, PyMC), R, SQL, MATLAB, LaTeX; Git, MLflow,
+        SLURM and HPC clusters}
+    \end{onecolentry}
+
+\end{document}

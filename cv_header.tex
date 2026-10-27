@@ -1,0 +1,39 @@
+% Shared name and contact header, \input right after \begin{document}
+    \newcommand{\AND}{\unskip
+    \cleaders\copy\ANDbox\hskip\wd\ANDbox
+    \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Bipin Lekhak}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Rochester, NY} %
+        \kern 0.25 cm %
+        \AND %
+        \kern 0.25 cm %
+        \mbox{\hrefWithoutArrow{mailto:bl1282@rit.edu}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}bl1282@rit.edu}} %
+        \kern 0.25 cm %
+        \AND %
+        \kern 0.25 cm %
+        \mbox{\hrefWithoutArrow{https://bipinlekhak.com.np/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}bipinlekhak.com.np}}%
+
+        \mbox{\hrefWithoutArrow{https://scholar.google.com/citations?user=z8T6GewAAAAJ}{\color{black}{\footnotesize\faGraduationCap}\hspace*{0.13cm}Google Scholar}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://openreview.net/profile?id=~Bipin_Lekhak2}{\color{black}{\footnotesize\faFile*}\hspace*{0.13cm}OpenReview}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/bipin-lekhak/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}bipin-lekhak}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/bipin-lekhak}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}bipin-lekhak}} %
+    \end{header}
