@@ -34,6 +34,7 @@ urlcolor=primaryColor
 \usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
 \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{etoolbox} % for \patchcmd and \AtBeginEnvironment
 
 % Ensure that generate pdf is machine readable/ATS parsable:
 \ifPDFTeX
@@ -61,7 +62,7 @@ urlcolor=primaryColor
 \makeatother
 \pagestyle{customFooterStyle}
 
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large\color{primaryColor}}{}{0pt}{}[\vspace{1pt}\titlerule]
 
 \titlespacing{\section}{
 % left space:
@@ -132,7 +133,7 @@ urlcolor=primaryColor
 \put(
 \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
 \LenToUnit{\paperheight-1.0 cm}
-){\vtop{{\null}\makebox[0pt][c]{\small\color{gray}\textit{Last updated in April 2026}\hspace{\widthof{Last updated in february 2024}}
+){\vtop{{\null}\makebox[0pt][c]{\small\color{gray}\textit{Last updated in October 2026}\hspace{\widthof{Last updated in October 2026}}
 }}} %
 } %
 } %
@@ -142,6 +143,9 @@ urlcolor=primaryColor
 
 % new command for external links:
 \renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+% one line in the skills section: bold label, then the list
+\newcommand{\skillline}[2]{\textbf{#1:} #2}
 
 
 \begin{document}
@@ -159,93 +163,110 @@ urlcolor=primaryColor
         \vspace{0.3 cm}
 
         \normalsize
-        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Rochester} %
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Rochester, NY} %
         \kern 0.25 cm %
         \AND %
         \kern 0.25 cm %
-        \mbox{\hrefWithoutArrow{mailto:youremail@yourdomain.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}bl1282@rit.edu}} %
+        \mbox{\hrefWithoutArrow{mailto:bl1282@rit.edu}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}bl1282@rit.edu}} %
         \kern 0.25 cm %
         \AND %
         \kern 0.25 cm %
-        % \mbox{\hrefWithoutArrow{tel:+90-541-999-99-99}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}0541 999 99 99}}%
-        % \kern 0.25 cm%
-        % \AND%
-        % \kern 0.25 cm%
-        % \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}yourwebsite.com}}%
-        % \kern 0.25 cm%
-        % \AND%
-        % \kern 0.25 cm%
-        % \mbox{\hrefWithoutArrow{https://linkedin.com/in/yourusername}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}yourusername}}%
-        % \kern 0.25 cm%
-        % \AND%
-        % \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://bipinlekhak.com.np/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}bipinlekhak.com.np}}%
+
+        \mbox{\hrefWithoutArrow{https://scholar.google.com/citations?user=z8T6GewAAAAJ}{\color{black}{\footnotesize\faGraduationCap}\hspace*{0.13cm}Google Scholar}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://openreview.net/profile?id=~Bipin_Lekhak2}{\color{black}{\footnotesize\faFile*}\hspace*{0.13cm}OpenReview}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/bipin-lekhak/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}bipin-lekhak}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
         \mbox{\hrefWithoutArrow{https://github.com/bipin-lekhak}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}bipin-lekhak}} %
     \end{header}
 
     \vspace{0.3 cm - 0.3 cm}
 
 
-    \section{Research Interests}
+    \section{Summary}
     \begin{onecolentry}
-        Time-series Forecasting, Causal Modeling, Dynamics Modeling
+        PhD candidate working on \textbf{causal machine learning for time series}: latent-dynamics
+        models that predict how a system---a patient, a tumour under therapy, a physical system observed
+        through video---will respond to interventions. My models separate a system's native dynamics from its
+        response to treatment, are identifiable, and adapt to each individual from its own history through
+        meta-learning. Before the PhD, four years as a machine learning engineer shipping medical imaging and
+        forecasting systems.
     \end{onecolentry}
 
     \vspace{0.2 cm}
 
+    \begin{onecolentry}
+        \textbf{Research interests:} causal inference over time, treatment-effect estimation under time-varying
+        confounding, latent dynamical systems and neural ODEs, identifiable representation learning,
+        meta-learning, machine learning for healthcare.
+    \end{onecolentry}
 
 
     \section{Education}
     \begin{twocolentry}{
-        \textit{August 2022 – Present}}
-        \textbf{Rochester Institute of Technology}
+        \textit{Aug 2022 – Present}
 
-        \textit{Phd in Computing and Information Sciences}
+        \textit{Expected Fall 2027}}
+        \textbf{Rochester Institute of Technology}, Rochester, NY
+
+        \textit{Ph.D. in Computing and Information Sciences}
     \end{twocolentry}
 
     \vspace{0.10 cm}
-    % \begin{onecolentry}
-    %     \begin{highlights}
-    %         \item GPA: 3.9/4.0 (\href{https://example.com}{a link to somewhere})
-    %         \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
-    %     \end{highlights}
-    % \end{onecolentry}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Advisor: Prof. Linwei Wang, Computational Biomedicine Laboratory
+            \item Dissertation proposal (defended July 2026): \textit{Learning Dynamics for Forecasting Future
+            Trajectories under External Interventions}
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
 
     \begin{twocolentry}{
-        \textit{Nov 2014 – Sept 2018}}
-        \textbf{Pulchowk Campus, Tribhuvan University}
+        \textit{Nov 2014 – Sep 2018}}
+        \textbf{Pulchowk Campus, Institute of Engineering, Tribhuvan University}, Nepal
 
-        \textit{Bachelors in Electronics \& Communications Engineering}
+        \textit{B.E. in Electronics and Communication Engineering}
     \end{twocolentry}
-
-    \vspace{0.10 cm}
-    % \begin{onecolentry}
-    %     \begin{highlights}
-    %         \item GPA: 3.9/4.0 (\href{https://example.com}{a link to somewhere})
-    %         \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
-    %     \end{highlights}
-    % \end{onecolentry}
 
 
     \section{Publications}
 
+    \begin{onecolentry}
+        \textit{Manuscripts under review}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
     \begin{samepage}
         \begin{twocolentry}{
-            \textbf{CinC 2023}
+            \textit{2026}
             }
-            \textbf{Novel In-Home Cardiac Monitoring for Heart Failure Patients}
+            \textbf{iASIDE: Identifiable, Adaptable, and Separable Interventional Dynamics}
 
-            % \vspace{0.10 cm}
+            \vspace{0.05 cm}
 
-            \mbox{\textbf{\textit{Bipin Lekhak}}, Ryan Missel, Dillon Dzikowicz, Solomiya Rachynska, Wojciech Zareba, Linwei Wang}
+            % TODO: confirm the author list before sending this CV out
+            \mbox{\textbf{\textit{Bipin Lekhak}}, Linwei Wang}
         \end{twocolentry}
-
-        % \vspace{0.05 cm}
-        \begin{onecolentry}
-            Paper link: \href{https://ieeexplore.ieee.org/abstract/document/10363960}{https://ieeexplore.ieee.org/abstract/document/10363960}
-        \end{onecolentry}
     \end{samepage}
 
-    \vspace{.5 cm}
+    \vspace{0.3 cm}
+
+    \begin{onecolentry}
+        \textit{Peer-reviewed conference papers}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
 
     \begin{samepage}
         \begin{twocolentry}{
@@ -255,44 +276,78 @@ urlcolor=primaryColor
 
             \vspace{0.05 cm}
 
-            \mbox{Ruby Shrestha, Ajay Gopi, Casey Meisenzahl, \textbf{Bipin Lekhak}, Linwei Wang}
+            \mbox{Ruby Shrestha, Ajay Gopi, Casey Meisenzahl, \textbf{\textit{Bipin Lekhak}}, Linwei Wang}
+
+            \vspace{0.05 cm}
+
+            International Conference on Learning Representations.
+            \href{https://openreview.net/forum?id=2LzYaW032Q}{OpenReview}
         \end{twocolentry}
+    \end{samepage}
 
+    \vspace{0.3 cm}
 
-        \vspace{0.10 cm}
+    \begin{samepage}
+        \begin{twocolentry}{
+            \textbf{CinC 2023}
+            }
+            \textbf{Novel In-Home Cardiac Monitoring for Heart Failure Patients}
 
-        \begin{onecolentry}
-            Paper link: \href{https://openreview.net/pdf?id=2LzYaW032Q}{https://openreview.net/pdf?id=2LzYaW032Q}
-        \end{onecolentry}
+            \vspace{0.05 cm}
+
+            \textbf{\textit{Bipin Lekhak}}, Ryan Missel, Dillon Dzikowicz, Solomiya Rachynska, Wojciech Zareba, Linwei Wang
+
+            \vspace{0.05 cm}
+
+            Computing in Cardiology.
+            \href{https://ieeexplore.ieee.org/abstract/document/10363960}{IEEE Xplore}
+        \end{twocolentry}
     \end{samepage}
 
 
-
-    \section{Experience}
+    \section{Research Experience}
 
     \begin{twocolentry}{
         \textit{Rochester, NY}
 
-        \textit{August 2022 – Present}}
-        \textbf{Research Assistant}
+        \textit{Aug 2022 – Present}}
+        \textbf{Graduate Research Assistant}
 
-        \textit{Computational Biomedicine Laboratory} \href{https://www.rit.edu/cblwang/}{https://www.rit.edu/cblwang/}
+        \textit{Computational Biomedicine Laboratory, RIT} (PI: Prof. Linwei Wang)
     \end{twocolentry}
 
     \vspace{0.10 cm}
     \begin{onecolentry}
         \begin{highlights}
-            \item Worked on heterogenous forecasting for longtidutional data.
+            \item \textbf{Interventional latent dynamics (ASIDE / iASIDE).} Developed a latent neural-ODE framework
+            for forecasting trajectories under time-varying treatments. It separates a system's native dynamics
+            from its intervention-response dynamics, adapts each to a subject's history through amortized
+            (feed-forward) meta-learning, and establishes identifiability of the latent interventional dynamics.
+            Improves intervention-response prediction most at long horizons and under high data heterogeneity.
+            \item \textbf{Benchmarking framework.} Built the evaluation suite behind the work: 10+ causal
+            time-series baselines (Causal Transformer, CRN, RMSN, MSM, G-Net, SCIP, TE-CDE, TESAR-CDE, ACTIN)
+            on tumour-growth simulation, MIMIC-III ICU data and high-dimensional pendulum video, with and without
+            time-varying confounding. Hydra, PyTorch Lightning and MLflow; SLURM sweeps across GPU clusters;
+            regression tests that verified a migration from PyTorch 1.13 to 2.x against the old results.
+            \item \textbf{Simulation.} Wrote a simulator of damped, forced pendulums under stochastic interventions,
+            rendered as image sequences, as a benchmark for interventional dynamics from high-dimensional
+            observations.
+            \item \textbf{Treatment-effect estimation over time} (work in progress, with S.\ Poudel). Temporal X- and
+            R-learners that build on the separable latent dynamics to identify causal treatment effects.
+            \item \textbf{In-home cardiac monitoring.} Analysed multi-sensor data from a toilet-seat cardiac monitor
+            in an NIH-funded (R01NR018301) study of heart-failure patients after hospital discharge, with the
+            University of Rochester Medical Center. Measured adherence and deployment failures, built data
+            dashboards, and predicted 21-day hospitalisation from 7-day windows (AUC 0.74).
         \end{highlights}
     \end{onecolentry}
 
 
-    \vspace{0.2 cm}
+    \section{Industry Experience}
 
     \begin{twocolentry}{
         \textit{Kathmandu, Nepal}
 
-        \textit{Sept 2018 – June 2022}}
+        \textit{Sep 2018 – Jun 2022}}
         \textbf{Machine Learning Engineer}
 
         \textit{Fusemachines}
@@ -301,91 +356,61 @@ urlcolor=primaryColor
     \vspace{0.10 cm}
     \begin{onecolentry}
         \begin{highlights}
-            \item Semantic segmentation of medical images using Deep Learning techniques using different CNN architectures and modern approaches such as U-Net, masked RCNN, Detectron.
-            \item Gradient free optimization for reconstructing 3D structures from Statistical Shape Models for 2D images
-
-            \item Forecasting sales for products based on historical data using multistaged modeling of different assumptions in the sales pipeline. The multiple stages consisted of approaches such as LSTM and Bayesian-based Prophet models, as well as Gradient boosted trees. I also worked in designing and experimenting stages with Bayesian modelling based approaches using PyMC.
-
+            \item Built deep-learning semantic segmentation for medical images with U-Net, Mask R-CNN and
+            Detectron.
+            \item Reconstructed 3D anatomical structures from 2D images by gradient-free optimisation over
+            statistical shape models.
+            \item Forecast product sales from historical data with a multi-stage model, each stage encoding a
+            different assumption about the sales pipeline (LSTMs, Prophet, gradient-boosted trees); designed and
+            tested Bayesian variants in PyMC.
         \end{highlights}
     \end{onecolentry}
 
 
-    \section{Projects}
-
-    \begin{twocolentry}{\textbf{2024 August - Present}}
-        \textbf{Forecasting dynamics under external interventions}
-    \end{twocolentry}
-
-
-
-
-
-
     \section{Teaching}
 
-    \begin{twocolentry}{\textbf{2025 August - December}}
-        \textbf{Teaching Assistant}
+    \begin{twocolentry}{
+        \textit{Fall 2025}}
+        \textbf{Teaching Assistant}, GCCIS-820 Quantitative Foundations, RIT
+
+        \textit{PhD core course: linear algebra, optimisation and statistical inference}
     \end{twocolentry}
 
+    \vspace{0.10 cm}
     \begin{onecolentry}
-
-        \begin{itemize}
-            \item Quantitative Foundations
-
-        \end{itemize}
+        \begin{highlights}
+            \item Supervised and graded team projects and reports; built the tool used to form project teams.
+        \end{highlights}
     \end{onecolentry}
-
-    % \section{Talks}
-    % \begin{itemize}
-    %     \item \textbf{Research talk} on “Be Confident in What You Know: Bayesian Parameter Efficient Fine-Tuning of Vision Foundation Models” at CHAI Seminar Series 2025, RIT
-    %     \item \textbf{Poster presentation} on “Be Confident in What You Know: Bayesian Parameter Efficient Fine-Tuning of Vision Foundation Models” at NeurIPS 2024 in Vancouver, Canada
-    %     \item \textbf{Poster presentation} on “Hierarchical Novelty Detection" in Grad Cohort for Women 2024 in Minneapolis, Minnesota
-    % \end{itemize}
-
-
-    % \section{Awards}
-
-    % \begin{twocolentry}{2024
-    %     }
-    %     \textbf{NeurIPS 2024 Scholar Award}
-    % \end{twocolentry}
-    % \vspace{0.2 cm}
-
-    % \begin{twocolentry}{2024
-    %     }
-    %     \textbf{Scholarship to attend the Grad Cohort for Women from CRA-WP}
-    % \end{twocolentry}
-
-    % \vspace{0.2 cm}
-    % \begin{twocolentry}{2022 - Present
-    %     }
-    %     \textbf{RIT Ph.D. Scholarship/Assistantship}
-    % \end{twocolentry}
-    % \vspace{0.2 cm}
-    % % \begin{twocolentry}{2022
-    %     %  }
-    %     %             \textbf{Best Project Undergrad}
-    %     %         \end{twocolentry}
 
 
     \section{Skills}
 
     \begin{onecolentry}
-        Machine Learning, Computer Vision, Novelty Detection, Hierarchical Novelty Detection, Uncertainty
-        Quantification, Evidential Learning, Data Science, Parameter Efficient Fine Tuning, Large Language Models
-
-
+        \skillline{Methods}{causal inference over time (potential outcomes, time-varying confounding, IPW and
+        marginal structural models, meta-learners), latent dynamics and state-space models, neural ODEs/CDEs,
+        meta-learning, variational inference, identifiability, Bayesian modelling, time-series forecasting,
+        medical image segmentation}
     \end{onecolentry}
 
-    \vspace{0.2 cm}
+    \vspace{0.10 cm}
 
     \begin{onecolentry}
-        Python, Numpy, SQL, Pandas, Pytorch, Scikit-learn, R, Matplotlib, Canva, JavaScript, React, Huggingface
+        \skillline{ML stack}{Python, PyTorch, PyTorch Lightning, torchdiffeq, Hydra, MLflow, Ray Tune,
+        scikit-learn, PyMC, Prophet, pandas, NumPy}
     \end{onecolentry}
 
+    \vspace{0.10 cm}
 
-    % \begin{equation}
-    %     \pm
-    % \end{equation}
+    \begin{onecolentry}
+        \skillline{Infrastructure}{SLURM and HPC clusters, Linux, Podman/containers, self-hosted MLflow, uv,
+        pytest, Git}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{onecolentry}
+        \skillline{Other}{R, MATLAB, SQL, LaTeX, Streamlit, Dash}
+    \end{onecolentry}
 
 \end{document}
