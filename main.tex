@@ -1,3 +1,5 @@
+% General CV, tuned for industry research-scientist roles (e.g. industrial AI research labs).
+% It is also the CV linked from the website. cv_health_research.tex is the health/academic version.
 \documentclass[10pt, letterpaper]{article}
 \input{cv_preamble}
 
@@ -9,20 +11,21 @@
 
     \section{Summary}
     \begin{onecolentry}
-        PhD candidate working on \textbf{causal machine learning for time series}: latent-dynamics
-        models that predict how a system---a patient, a tumour under therapy, a physical system observed
-        through video---will respond to interventions. My models separate a system's native dynamics from its
-        response to treatment, are identifiable, and adapt to each individual from its own history through
-        meta-learning. Before the PhD, four years as a machine learning engineer shipping medical imaging and
+        PhD candidate building \textbf{scientific machine learning models of dynamical systems}: latent
+        neural-ODE models that combine structural assumptions with data to predict how a system will respond to
+        control inputs and interventions. The models separate a system's intrinsic dynamics from its response to
+        inputs, are identifiable, and adapt to each individual system from its own history through
+        meta-learning. Validated on physical systems observed through video, mechanistic simulators and clinical
+        time series. Before the PhD, four years as a machine learning engineer shipping computer-vision and
         forecasting systems.
     \end{onecolentry}
 
     \vspace{0.2 cm}
 
     \begin{onecolentry}
-        \textbf{Research interests:} causal inference over time, treatment-effect estimation under time-varying
-        confounding, latent dynamical systems and neural ODEs, identifiable representation learning,
-        meta-learning, machine learning for healthcare.
+        \textbf{Research interests:} scientific machine learning, time-series modelling and forecasting under
+        interventions, latent dynamical systems and neural ODEs, causal inference over time, identifiable
+        representation learning, meta-learning for adaptation across systems, machine learning for health.
     \end{onecolentry}
 
 
@@ -134,25 +137,25 @@
     \vspace{0.10 cm}
     \begin{onecolentry}
         \begin{highlights}
-            \item \textbf{Interventional latent dynamics (ASIDE / iASIDE).} Developed a latent neural-ODE framework
-            for forecasting trajectories under time-varying treatments. It separates a system's native dynamics
-            from its intervention-response dynamics, adapts each to a subject's history through amortized
-            (feed-forward) meta-learning, and establishes identifiability of the latent interventional dynamics.
-            Improves intervention-response prediction most at long horizons and under high data heterogeneity.
-            \item \textbf{Benchmarking framework.} Built the evaluation suite behind the work: 10+ causal
-            time-series baselines (Causal Transformer, CRN, RMSN, MSM, G-Net, SCIP, TE-CDE, TESAR-CDE, ACTIN)
-            on tumour-growth simulation, MIMIC-III ICU data and high-dimensional pendulum video, with and without
-            time-varying confounding. Hydra, PyTorch Lightning and MLflow; SLURM sweeps across GPU clusters;
-            regression tests that verified a migration from PyTorch 1.13 to 2.x against the old results.
-            \item \textbf{Simulation.} Wrote a simulator of damped, forced pendulums under stochastic interventions,
-            rendered as image sequences, as a benchmark for interventional dynamics from high-dimensional
-            observations.
+            \item \textbf{Interventional latent dynamics (iASIDE), project lead and first author.} Developed a latent
+            neural-ODE framework that predicts a system's trajectory under future control inputs or treatments. It
+            separates intrinsic dynamics from the response to inputs, adapts both to each system from its history
+            through amortized (feed-forward) meta-learning, and establishes identifiability of the learned
+            dynamics. Gains over baselines are largest at long horizons and across heterogeneous systems.
+            \item \textbf{Physics-based simulation.} Wrote a simulator of damped, forced pendulums under stochastic
+            inputs, rendered as image sequences, to test whether models recover physical parameters from video.
+            Also evaluated on a pharmacokinetic--pharmacodynamic simulator of tumour growth under therapy and on
+            MIMIC-III intensive-care records.
+            \item \textbf{Reusable research software.} Built the project's experiment framework: 10+ baselines
+            (Causal Transformer, CRN, RMSN, MSM, G-Net, SCIP, TE-CDE, TESAR-CDE, ACTIN) on three benchmarks, with
+            Hydra configuration, PyTorch Lightning, MLflow tracking, SLURM sweeps across GPU clusters, and
+            regression tests that verified a migration from PyTorch 1.13 to 2.x.
+            \item \textbf{Real-world sensor data} (NIH R01NR018301, with the University of Rochester Medical
+            Center). Analysed multi-sensor time series from devices deployed in heart-failure patients' homes for
+            90 days. Characterised deployment failures and missing data, built data dashboards, and
+            predicted 21-day hospitalisation from 7-day windows (AUC 0.74).
             \item \textbf{Treatment-effect estimation over time} (work in progress, with S.\ Poudel). Temporal X- and
-            R-learners that build on the separable latent dynamics to identify causal treatment effects.
-            \item \textbf{In-home cardiac monitoring.} Analysed multi-sensor data from a toilet-seat cardiac monitor
-            in an NIH-funded (R01NR018301) study of heart-failure patients after hospital discharge, with the
-            University of Rochester Medical Center. Measured adherence and deployment failures, built data
-            dashboards, and predicted 21-day hospitalisation from 7-day windows (AUC 0.74).
+            R-learners that build on the separable latent dynamics to identify causal effects.
         \end{highlights}
     \end{onecolentry}
 
@@ -202,17 +205,23 @@
     \section{Skills}
 
     \begin{onecolentry}
-        \skillline{Methods}{causal inference over time (potential outcomes, time-varying confounding, IPW and
-        marginal structural models, meta-learners), latent dynamics and state-space models, neural ODEs/CDEs,
-        meta-learning, variational inference, identifiability, Bayesian modelling, time-series forecasting,
-        medical image segmentation}
+        \skillline{Scientific ML and time series}{neural ODEs/CDEs, latent state-space models, physics-based
+        simulation, meta-learning, variational inference, identifiability, Bayesian modelling, forecasting
+        (LSTMs, Prophet, gradient-boosted trees)}
+    \end{onecolentry}
+
+    \vspace{0.10 cm}
+
+    \begin{onecolentry}
+        \skillline{Causal ML}{potential outcomes, time-varying confounding, IPW and marginal structural models,
+        meta-learners (X- and R-learners)}
     \end{onecolentry}
 
     \vspace{0.10 cm}
 
     \begin{onecolentry}
         \skillline{ML stack}{Python, PyTorch, PyTorch Lightning, torchdiffeq, Hydra, MLflow, Ray Tune,
-        scikit-learn, PyMC, Prophet, pandas, NumPy}
+        scikit-learn, PyMC, pandas, NumPy; computer vision (U-Net, Mask R-CNN, Detectron)}
     \end{onecolentry}
 
     \vspace{0.10 cm}
