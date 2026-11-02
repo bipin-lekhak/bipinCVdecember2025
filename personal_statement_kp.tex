@@ -5,7 +5,7 @@
 \documentclass[11pt, letterpaper]{article}
 \input{cv_preamble}
 \hypersetup{pdftitle={Bipin Lekhak - Personal Statement}}
-\setlength{\parskip}{0.4em}
+\setlength{\parskip}{0.5em}
 
 \begin{document}
     \renewcommand{\placelastupdatedtext}{} % no "last updated" stamp on the statement
@@ -20,107 +20,66 @@
     \end{center}
 
 
-    \section{Research focus}
+    \section{From home monitoring to evaluating AI in care}
 
-    Heart-failure care is a sequence of decisions. A clinician starts or adjusts a medication, schedules
-    follow-up and revisits the plan as the patient changes. ORCHESTRATE-HF asks whether AI agents that suggest
-    those decisions improve care, and the answer depends on how they are evaluated as much as on the agents
-    themselves. My research builds the methods that evaluation needs: estimating how a patient's course would
-    differ under different sequences of care, using the records health systems already keep.
+    In an NIH-funded study with the University of Rochester Medical Center (R01NR018301), heart-failure patients
+    used a sensor-equipped toilet seat that recorded cardiac measurements at home for 90 days after discharge. I
+    was the lead student for RIT's part of the study. I worked in the field on data collection and participant
+    surveys, led the cleaning, validation and processing of the data, and contributed to the predictive models
+    (logistic regression, decision trees and random forests). I was first author of the resulting paper
+    (Computing in Cardiology 2023), and a fuller predictive analysis is being completed.
 
-    I am applying to the Delivery Science Fellowship to work on the design and evaluation of ORCHESTRATE-HF, and
-    to learn how a health system tests a new kind of care before it reaches every patient.
-
-
-    \section{What a home-monitoring study taught me about heart-failure care}
-
-    Early in my PhD I joined an NIH-funded study (R01NR018301) with clinical investigators at the University of
-    Rochester Medical Center. Heart-failure patients used a sensor-equipped toilet seat that recorded cardiac
-    measurements at home for 90 days after discharge.
-
-    I analysed the study data and was first author of the resulting paper (Computing in Cardiology 2023). From
-    7-day windows of heart rate, heart-rate variability and other seat measurements, a random-forest model
-    predicted hospitalisation within 21 days with an AUC of 0.74.
-
-    The prediction was the easier part. Of the 140 patients who consented, 35.5\% were enrolled, and the paper
-    documents why home deployments failed and how consistently patients used the device. An AI agent placed in
-    clinical workflows faces the same tests of reach, adherence and fit with how clinicians work, and those tests
-    decide whether it helps patients. This is the lesson I would bring to ORCHESTRATE-HF: evaluate a tool as it
-    is used in care, not only as it performs on past data.
+    Working in the field showed me where home monitoring breaks down: many patients who consented were never
+    enrolled, often because the seat did not fit their toilet, and blood pressure was recorded far less
+    consistently than heart rate. Which patients and measurements go missing decides what a model built on such
+    data can learn. Ours could still flag patients at higher risk of hospitalisation from a week of seat data.
+    ORCHESTRATE-HF moves from predicting risk to suggesting treatment, and evaluating those suggestions means
+    estimating outcomes under treatment sequences patients did not receive. That is the subject of my
+    dissertation.
 
 
-    \section{Methods for evaluating care that changes over time}
+    \section{Methods for treatments that change over time}
 
     My dissertation, \textit{Learning Dynamics for Forecasting Future Trajectories under External Interventions}
-    (proposal defended July 2026), asks how to predict a patient's trajectory under a treatment plan they have
-    not yet received. The same question sits at the centre of evaluating an AI agent from records: to judge a
-    recommendation, one needs to know how the patient would have done had it been followed.
-
-    The main result is iASIDE, a model that learns two things separately: the course a patient's condition would
-    take on its own, and how it responds to each treatment. Both parts adapt to each patient from their own
-    history, so the model copes with patients who respond differently. The paper also sets out conditions under
-    which these learned dynamics are identifiable, that is, when the data point to one answer rather than many
-    that fit equally well (manuscript under review, with Yubo Ye, Suraj Poudel, Ruby Shrestha and Linwei Wang).
-
-    I evaluated the work on MIMIC-III intensive-care records and on a simulator of tumour growth under
-    chemotherapy and radiotherapy, where true counterfactual outcomes are known. The comparison includes the
-    g-methods epidemiologists use for time-varying treatments (marginal structural models with inverse
-    probability weighting, and g-computation) and their machine-learning extensions. iASIDE improved
-    treatment-response prediction most at long horizons and when patients were most heterogeneous. With Suraj
-    Poudel, I am now extending this work to estimate individual treatment effects directly, by adapting the X-
-    and R-learner frameworks to longitudinal data.
+    (proposal defended July 2026), predicts a patient's trajectory under a treatment plan they have not yet
+    received. Its main result, iASIDE (first author, under review), learns a patient's untreated disease course
+    and their response to treatment as separate components, adapts both to each patient from their own history,
+    and states when these dynamics are identifiable from observational data. On MIMIC-III and on a tumour-growth
+    simulator with known counterfactual outcomes, I benchmarked it against marginal structural models with
+    inverse probability weighting, g-computation, and machine-learning methods for time-varying treatments; its
+    advantage was largest at long horizons and in heterogeneous patient populations. With Suraj Poudel, I am now
+    adapting X- and R-learners to estimate individual treatment effects from longitudinal data.
 
 
-    \section{What I would contribute to ORCHESTRATE-HF}
+    \section{Proposed work on ORCHESTRATE-HF}
 
-    ORCHESTRATE-HF first evaluates candidate agents on existing KPNC records, then brings the best into care
-    workflows and tests them in a randomised trial. My methods bear on each stage.
+    The agents will help clinicians use the several medications recommended for heart failure. Each medication
+    decision depends on blood pressure, kidney function and potassium, which earlier decisions changed. That feedback is time-varying confounding, and it shapes each phase of the project.
 
-    \begin{enumerate}[leftmargin=0.6 cm, topsep=0pt, itemsep=0.25em, parsep=0pt]
-        \item \textbf{Evaluating agents before deployment.} Judging an agent's treatment suggestions on past
-        records means estimating outcomes under care the patients did not receive. Sicker patients receive more
-        intensive care, so this is a problem of time-varying confounding. G-methods and counterfactual trajectory
-        models give complementary answers that can be checked against each other.
-        \item \textbf{Analysis plans for the trial.} Randomisation answers whether AI-assisted care helps on
-        average. The questions that follow need longitudinal causal methods: which patients benefit, and what
-        happens when clinicians follow or override a suggestion. The same heterogeneous-effect estimators can test
-        whether the benefit differs by race and ethnicity, language or neighbourhood, a direct check on deploying
-        AI equitably. I have not yet worked on health equity and would learn this framing from mentors who have.
-        \item \textbf{Monitoring agents after deployment.} Once an agent's suggestions shape treatment, later
-        records reflect its actions as well as patients' risk, so a model checked or retrained on them can learn
-        that high-risk patients do well because they were treated. Separating a patient's own course from the
-        response to treatment is how my models address this, and the problem applies to any AI tool whose output
-        triggers care.
+    \begin{enumerate}[leftmargin=0.6 cm, topsep=0pt, itemsep=0.3em, parsep=0pt]
+        \item \textbf{Evaluating agents on past KPNC records.} Scoring an agent's recommendations requires the
+        outcomes patients would have had if clinicians had followed them. I would estimate these in target-trial
+        emulations of medication strategies, with both g-computation and counterfactual trajectory models, and
+        treat disagreement between the two as a warning before an agent reaches patients.
+        \item \textbf{The trial's statistical analysis plan.} Randomisation gives the average effect of
+        AI-assisted care. I would work on the secondary analyses: per-protocol effects that account for whether
+        clinicians followed each suggestion, and heterogeneous effects, including by race and ethnicity, to test
+        whether the benefit is shared equitably.
+        \item \textbf{Monitoring agents after deployment.} Once agents change treatment, later records reflect
+        their actions, and a risk model retrained on those records can learn that high-risk patients are low risk
+        because they were treated. Separating the untreated course from the treatment response, the core of
+        iASIDE, addresses this directly.
     \end{enumerate}
 
-    I would welcome the chance to learn from the project's investigators: Dr.\ Ankeet Bhatt, the cardiologist
-    leading the project; Dr.\ Alan Go, who heads the Division's Cardiovascular, Kidney, and Metabolic Health
-    Research Section; and Dr.\ Vincent Liu, chief data officer of The Permanente Medical Group.
 
+    \section{What I bring and what I need}
 
-    \section{What the fellowship would add}
-
-    I come to delivery science from machine learning, and I know where my training is thin. I have not designed
-    a randomised trial or led a grant, my publications are in computing venues, and I have not written for
-    clinicians or health-system leaders. On ORCHESTRATE-HF I would contribute to evaluating the agents rather
-    than building them.
-
-    The fellowship addresses each gap. ORCHESTRATE-HF would teach me how a randomised trial embedded in routine
-    care is designed, run and analysed. First-authored papers in clinical and health-services journals, with
-    training in grant writing, would prepare me to lead my own studies.
-
-    In return I bring methods for longitudinal causal questions, reproducible research software built for large
-    datasets, and four years of industry experience building machine-learning systems that had to work outside
-    the lab.
-
-
-    \section{Career goals}
-
-    I want to lead research in a learning health system, evaluating AI and the other new tools health systems
-    bring into care, with methods suited to decisions that unfold over time. My long-term aim is an independent
-    research career in a health-system research division or an academic medical center, where methods are judged
-    by whether they change care.
-
-    I expect to complete my PhD in June 2027 and would be ready to start with the July 2027 cohort.
+    I bring longitudinal causal methods, experience collecting and validating data from patients at home,
+    reproducible software for large-scale experiments (a benchmark of more than ten methods run on HPC
+    clusters), and four years as a machine-learning engineer before the PhD. I have
+    not designed a randomised trial, written a grant or published in clinical journals; working with Drs.\ Ankeet
+    Bhatt, Alan Go and Vincent Liu on ORCHESTRATE-HF would teach me all three. My goal is an independent research
+    career in a learning health system, evaluating the AI tools it deploys. I expect to complete my PhD in June
+    2027 and would join the July 2027 cohort.
 
 \end{document}
