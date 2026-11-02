@@ -1,0 +1,126 @@
+% Personal statement for the Kaiser Permanente Division of Research Delivery Science Fellowship
+% (July 2027 cohort, ORCHESTRATE-HF). The form asks for at most 2-3 pages covering prior record,
+% reasons for interest in the fellowship and plans for the future.
+% Shares cv_preamble.tex and cv_header.tex with the CVs so the documents match.
+\documentclass[11pt, letterpaper]{article}
+\input{cv_preamble}
+\hypersetup{pdftitle={Bipin Lekhak - Personal Statement}}
+\setlength{\parskip}{0.4em}
+
+\begin{document}
+    \renewcommand{\placelastupdatedtext}{} % no "last updated" stamp on the statement
+    \input{cv_header}
+
+    \vspace{0.2 cm}
+    \begin{center}
+        {\Large\bfseries\color{primaryColor} Personal Statement}
+
+        \vspace{0.1 cm}
+        Delivery Science Fellowship, Kaiser Permanente Division of Research
+    \end{center}
+
+
+    \section{Research focus}
+
+    Heart-failure care is a sequence of decisions. A clinician starts or adjusts a medication, schedules
+    follow-up and revisits the plan as the patient changes. ORCHESTRATE-HF asks whether AI agents that suggest
+    those decisions improve care, and the answer depends on how they are evaluated as much as on the agents
+    themselves. My research builds the methods that evaluation needs: estimating how a patient's course would
+    differ under different sequences of care, using the records health systems already keep.
+
+    I am applying to the Delivery Science Fellowship to work on the design and evaluation of ORCHESTRATE-HF, and
+    to learn how a health system tests a new kind of care before it reaches every patient.
+
+
+    \section{What a home-monitoring study taught me about heart-failure care}
+
+    Early in my PhD I joined an NIH-funded study (R01NR018301) with clinical investigators at the University of
+    Rochester Medical Center. Heart-failure patients used a sensor-equipped toilet seat that recorded cardiac
+    measurements at home for 90 days after discharge.
+
+    I analysed the study data and was first author of the resulting paper (Computing in Cardiology 2023). From
+    7-day windows of heart rate, heart-rate variability and other seat measurements, a random-forest model
+    predicted hospitalisation within 21 days with an AUC of 0.74.
+
+    The prediction was the easier part. Of the 140 patients who consented, 35.5\% were enrolled, and the paper
+    documents why home deployments failed and how consistently patients used the device. An AI agent placed in
+    clinical workflows faces the same tests of reach, adherence and fit with how clinicians work, and those tests
+    decide whether it helps patients. This is the lesson I would bring to ORCHESTRATE-HF: evaluate a tool as it
+    is used in care, not only as it performs on past data.
+
+
+    \section{Methods for evaluating care that changes over time}
+
+    My dissertation, \textit{Learning Dynamics for Forecasting Future Trajectories under External Interventions}
+    (proposal defended July 2026), asks how to predict a patient's trajectory under a treatment plan they have
+    not yet received. The same question sits at the centre of evaluating an AI agent from records: to judge a
+    recommendation, one needs to know how the patient would have done had it been followed.
+
+    The main result is iASIDE, a model that learns two things separately: the course a patient's condition would
+    take on its own, and how it responds to each treatment. Both parts adapt to each patient from their own
+    history, so the model copes with patients who respond differently. The paper also sets out conditions under
+    which these learned dynamics are identifiable, that is, when the data point to one answer rather than many
+    that fit equally well (manuscript under review, with Yubo Ye, Suraj Poudel, Ruby Shrestha and Linwei Wang).
+
+    I evaluated the work on MIMIC-III intensive-care records and on a simulator of tumour growth under
+    chemotherapy and radiotherapy, where true counterfactual outcomes are known. The comparison includes the
+    g-methods epidemiologists use for time-varying treatments (marginal structural models with inverse
+    probability weighting, and g-computation) and their machine-learning extensions. iASIDE improved
+    treatment-response prediction most at long horizons and when patients were most heterogeneous. With Suraj
+    Poudel, I am now extending this work to estimate individual treatment effects directly, by adapting the X-
+    and R-learner frameworks to longitudinal data.
+
+
+    \section{What I would contribute to ORCHESTRATE-HF}
+
+    ORCHESTRATE-HF first evaluates candidate agents on existing KPNC records, then brings the best into care
+    workflows and tests them in a randomised trial. My methods bear on each stage.
+
+    \begin{enumerate}[leftmargin=0.6 cm, topsep=0pt, itemsep=0.25em, parsep=0pt]
+        \item \textbf{Evaluating agents before deployment.} Judging an agent's treatment suggestions on past
+        records means estimating outcomes under care the patients did not receive. Sicker patients receive more
+        intensive care, so this is a problem of time-varying confounding. G-methods and counterfactual trajectory
+        models give complementary answers that can be checked against each other.
+        \item \textbf{Analysis plans for the trial.} Randomisation answers whether AI-assisted care helps on
+        average. The questions that follow need longitudinal causal methods: which patients benefit, and what
+        happens when clinicians follow or override a suggestion. The same heterogeneous-effect estimators can test
+        whether the benefit differs by race and ethnicity, language or neighbourhood, a direct check on deploying
+        AI equitably. I have not yet worked on health equity and would learn this framing from mentors who have.
+        \item \textbf{Monitoring agents after deployment.} Once an agent's suggestions shape treatment, later
+        records reflect its actions as well as patients' risk, so a model checked or retrained on them can learn
+        that high-risk patients do well because they were treated. Separating a patient's own course from the
+        response to treatment is how my models address this, and the problem applies to any AI tool whose output
+        triggers care.
+    \end{enumerate}
+
+    I would welcome the chance to learn from the project's investigators: Dr.\ Ankeet Bhatt, the cardiologist
+    leading the project; Dr.\ Alan Go, who heads the Division's Cardiovascular, Kidney, and Metabolic Health
+    Research Section; and Dr.\ Vincent Liu, chief data officer of The Permanente Medical Group.
+
+
+    \section{What the fellowship would add}
+
+    I come to delivery science from machine learning, and I know where my training is thin. I have not designed
+    a randomised trial or led a grant, my publications are in computing venues, and I have not written for
+    clinicians or health-system leaders. On ORCHESTRATE-HF I would contribute to evaluating the agents rather
+    than building them.
+
+    The fellowship addresses each gap. ORCHESTRATE-HF would teach me how a randomised trial embedded in routine
+    care is designed, run and analysed. First-authored papers in clinical and health-services journals, with
+    training in grant writing, would prepare me to lead my own studies.
+
+    In return I bring methods for longitudinal causal questions, reproducible research software built for large
+    datasets, and four years of industry experience building machine-learning systems that had to work outside
+    the lab.
+
+
+    \section{Career goals}
+
+    I want to lead research in a learning health system, evaluating AI and the other new tools health systems
+    bring into care, with methods suited to decisions that unfold over time. My long-term aim is an independent
+    research career in a health-system research division or an academic medical center, where methods are judged
+    by whether they change care.
+
+    I expect to complete my PhD in June 2027 and would be ready to start with the July 2027 cohort.
+
+\end{document}
